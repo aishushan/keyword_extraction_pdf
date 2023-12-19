@@ -12,7 +12,7 @@ from io import BytesIO
 class PDFFunctions:
     @staticmethod
     def extract_text_from_pdf(pdf_content):
-        doc = fitz.open(BytesIO(pdf_content))
+        doc = fitz.open(pdf_content)
         text = ""
         for page_num in range(doc.page_count):
             page = doc[page_num]
@@ -49,7 +49,7 @@ if uploaded_file is not None:
     pdf_content = BytesIO(uploaded_file.read())
 
     # Use the methods of the PDFFunctions class
-    pdf_text = pdf_functions_instance.extract_text_from_pdf(pdf_content.read())
+    pdf_text = pdf_functions_instance.extract_text_from_pdf(pdf_content)
 
     # Display the extracted text
     st.subheader("Extracted text")
