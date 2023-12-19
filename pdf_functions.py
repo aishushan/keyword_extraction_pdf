@@ -3,8 +3,18 @@ import fitz
 from rake_nltk import Rake
 import re
 from io import BytesIO
+import nltk
+from nltk import download
 
 class PDFFunctions:
+    def __init__(self):
+        self.setup()
+
+    def setup(self):
+        # Download NLTK resources
+        download('stopwords')
+        download('punkt')
+
     @staticmethod
     def extract_text_from_pdf(pdf_content):
         doc = fitz.open(stream=pdf_content)
