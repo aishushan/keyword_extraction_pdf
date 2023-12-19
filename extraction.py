@@ -7,7 +7,6 @@ from rake_nltk import Rake
 import re
 import io 
 from io import BytesIO
-from pdf_functions import PDFFunctions
 
 
 class PDFFunctions:
