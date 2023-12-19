@@ -11,6 +11,8 @@ from io import BytesIO
 #from .pdf_functions import PDFFunctions
 from pdf_functions import PDFFunctions
 
+
+# Streamlit app title
 st.title("KEYWORD EXTRACTION FROM PDF FILE")
 
 # File upload section
@@ -31,6 +33,9 @@ if uploaded_file is not None:
     st.subheader("Extracted text")
     st.text(pdf_text)
 
+    # Download NLTK resources (if not already downloaded)
+    pdf_functions_instance.setup()
+
     # Extract keywords and clean them
     pdf_keywords = pdf_functions_instance.extract_keywords_from_text(pdf_text)
     cleaned_keywords = pdf_functions_instance.clean_keywords(pdf_keywords)
@@ -39,4 +44,3 @@ if uploaded_file is not None:
     st.subheader("Cleaned Keywords:")
     for score, keyword in cleaned_keywords:
         st.text(f"{score:.2f}: {keyword}")
-
