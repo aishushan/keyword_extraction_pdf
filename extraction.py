@@ -45,8 +45,11 @@ if uploaded_file is not None:
     # Read the file content as bytes
     pdf_content = uploaded_file.read()
 
+    # Use BytesIO to read the file content as bytes
+    pdf_content = BytesIO(uploaded_file.read())
+
     # Use the methods of the PDFFunctions class
-    pdf_text = pdf_functions_instance.extract_text_from_pdf(pdf_content.decode('utf-8'))
+    pdf_text = pdf_functions_instance.extract_text_from_pdf(pdf_content.read())
 
     # Display the extracted text
     st.subheader("Extracted text")
